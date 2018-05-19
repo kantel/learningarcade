@@ -11,31 +11,34 @@ class MyGame(arcade.Window):
     def __init__(self, width, height):
         super().__init__(width, height, "Sprite Stage 2")
         arcade.set_background_color(arcade.color.AMAZON)
+        
+        # Hier wird der Pfad zum Verzeichnis des ».py«-Files gesetzt
+        # Erspart einem das Herumgehample in TextMate mit dem os.getcwd()
+        # und os.path.join()
+        file_path = os.path.dirname(os.path.abspath(__file__))
+        os.chdir(file_path)
     
     def setup(self):
         # Spieler
         self.player_list = arcade.SpriteList()
-        player_path = os.path.join(os.getcwd(), "sources/images/ftr2_fr1.gif")
-        self.player_sprite = arcade.Sprite(player_path)
-        # self.player_sprite = arcade.Sprite("images/ftr2_fr1.gif")
+        self.player_sprite = arcade.Sprite("images/ftr2_fr1.gif")
         self.player_sprite.center_x = 320
         self.player_sprite.center_y = 240
         self.player_list.append(self.player_sprite)
         
         # Mauer
         self.wall_list = arcade.SpriteList()
-        wall_path = os.path.join(os.getcwd(), "sources/images/wall.png")
-        wall = arcade.Sprite(wall_path)
+        wall = arcade.Sprite("images/wall.png")
         wall.center_x = 200
         wall.center_y = 200
         self.wall_list.append(wall)
         
-        wall = arcade.Sprite(wall_path)
+        wall = arcade.Sprite("images/wall.png")
         wall.center_x = 232
         wall.center_y = 200
         self.wall_list.append(wall)
         
-        wall = arcade.Sprite(wall_path)
+        wall = arcade.Sprite("images/wall.png")
         wall.center_x = 264
         wall.center_y = 200
         self.wall_list.append(wall)
