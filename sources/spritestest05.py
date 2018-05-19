@@ -6,10 +6,21 @@ WIDTH = 640
 HEIGHT = 480
 PLAYER_SPEED = 5
 
+def get_map(filename):
+    map_file = open(filename)
+    map_array = []
+    for line in map_file:
+        line = line.strip()
+        map_row = line.split(",")
+        for index, item in enumerate(map_row):
+            map_row[index] = int(item)
+        map_array.append(map_row)
+    return map_array
+
 class MyGame(arcade.Window):
     
     def __init__(self, width, height):
-        super().__init__(width, height, "Sprite Stage 3")
+        super().__init__(width, height, "Sprite Stage 4")
         arcade.set_background_color(arcade.color.AMAZON)
         
         # Hier wird der Pfad zum Verzeichnis des ».py«-Files gesetzt
@@ -49,25 +60,35 @@ class MyGame(arcade.Window):
         
         self.player.texture_change_distance = 20     #20
         
-        self.player.center_x = 320
-        self.player.center_y = 240
+        self.player.center_x = 64 + 16
+        self.player.center_y = 16
         self.all_sprites_list.append(self.player)
         
         # Mauer
-        wall = arcade.Sprite("images/wall.png")
-        wall.center_x = 200
-        wall.center_y = 200
-        self.wall_list.append(wall)
-        
-        wall = arcade.Sprite("images/wall.png")
-        wall.center_x = 232
-        wall.center_y = 200
-        self.wall_list.append(wall)
-        
-        wall = arcade.Sprite("images/wall.png")
-        wall.center_x = 264
-        wall.center_y = 200
-        self.wall_list.append(wall)
+        # wall = arcade.Sprite("images/wall.png")
+        # self.wall_list.append(wall)
+        map_array = get_map("assets/map.csv")
+
+        # Right edge of the map in pixels
+        self.end_of_map = len(map_array[0]) * 32
+
+        for row_index, row in enumerate(map_array):
+            for column_index, item in enumerate(row):
+                # For this map, the numbers represent:
+                # 1  = wall
+                # 2  = grass (empty)
+                # 3  = exit
+                if item == 2:
+                    continue
+                elif item == 1:
+                    wall = arcade.Sprite("images/wall.png")
+                elif item == 3:
+                    continue
+
+                wall.right = 32 + column_index * 32
+                wall.top = 32 + row_index * 32
+                self.all_sprites_list.append(wall)
+                self.wall_list.append(wall)
         
         self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.wall_list)
     
