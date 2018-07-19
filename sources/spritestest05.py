@@ -98,7 +98,7 @@ class MyGame(arcade.Window):
         self.wall_list.draw()
     
     def update(self, delta_time):
-        self.all_sprites_list.update()
+        # self.all_sprites_list.update()
         self.all_sprites_list.update_animation()
         self.physics_engine.update()
 
