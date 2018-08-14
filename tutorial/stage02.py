@@ -59,19 +59,19 @@ class MyGame (ar.Window):
 
     def on_key_press(self, key, modifiers):
         if key == ar.key.UP:
-            self.player_sprite.change_y = SPEED
+            self.player_sprite.center_y += TILE_SIZE
         elif key == ar.key.DOWN:
-            self.player_sprite.change_y = -SPEED
+            self.player_sprite.center_y -= TILE_SIZE
         elif key == ar.key.LEFT:
-            self.player_sprite.change_x = -SPEED
+            self.player_sprite.center_x -= TILE_SIZE
         elif key == ar.key.RIGHT:
-            self.player_sprite.change_x = SPEED
+            self.player_sprite.center_x += TILE_SIZE
 
-    def on_key_release(self, key, modifiers):
-        if key == ar.key.UP or key == ar.key.DOWN:
-            self.player_sprite.change_y = 0
-        elif key == ar.key.LEFT or key == ar.key.RIGHT:
-            self.player_sprite.change_x = 0
+    # def on_key_release(self, key, modifiers):
+    #     if key == ar.key.UP or key == ar.key.DOWN:
+    #         self.player_sprite.change_y = 0
+    #     elif key == ar.key.LEFT or key == ar.key.RIGHT:
+    #        self.player_sprite.change_x = 0
 
 
 
