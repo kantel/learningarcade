@@ -57,4 +57,3 @@ class BouncingBall(arcade.Window):
 
 BouncingBall()
 arcade.run()
-        
