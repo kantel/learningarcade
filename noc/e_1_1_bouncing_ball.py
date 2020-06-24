@@ -5,14 +5,14 @@ from pvector import PVector
 WIDTH = 400
 HEIGHT = 400
 TITLE = "Bouncing Ball"
-NO_BALLS = 10
+NO_BALLS = 15
 
 colorlist = [(239, 242, 63), (198, 102, 230), (151, 87, 165), (129, 122, 198), (98, 199, 119)]
 
 class Ball():
     
     def __init__(self):
-        self.radius = random.randrange(5, 20)
+        self.radius = random.randrange(10, 20)
         # Position and Velocity
         x = random.randrange(self.radius, WIDTH - self.radius)
         y = random.randrange(self.radius, HEIGHT - self.radius)
@@ -30,9 +30,9 @@ class Ball():
     def move(self):
         self.position.add(self.velocity)
     
-        if (self.position.x > WIDTH - self.radius) or (self.position.x < self.radius):
+        if (self.position.x >= WIDTH - self.radius) or (self.position.x <= self.radius):
             self.velocity.x *= -1
-        if (self.position.y > HEIGHT - self.radius) or (self.position.y < self.radius):
+        if (self.position.y >= HEIGHT - self.radius) or (self.position.y <= self.radius):
             self.velocity.y *= -1
 
 class BouncingBall(arcade.Window):
