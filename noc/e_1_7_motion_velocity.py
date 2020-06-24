@@ -4,24 +4,21 @@ from pvector import PVector
 
 WIDTH = 400
 HEIGHT = 400
-TITLE = "Bouncing Ball"
-NO_BALLS = 15
+TITLE = "Motion 101 (Velocity)"
 
-colorlist = [(239, 242, 63), (198, 102, 230), (151, 87, 165), (129, 122, 198), (98, 199, 119)]
-
-class Ball():
+class Mover():
     
     def __init__(self):
-        self.radius = random.randrange(10, 20)
+        self.radius = 16
         # Position and Velocity
         x = random.randrange(self.radius, WIDTH - self.radius)
         y = random.randrange(self.radius, HEIGHT - self.radius)
         self.position = PVector(x, y)
-        v_x = random.randrange(-10, 10)
-        v_y = random.randrange(-10, 10)
+        v_x = random.randrange(-2, 2)
+        v_y = random.randrange(-2, 2)
         self.velocity = PVector(v_x, v_y)
         # Farbe
-        self.color = random.choice(colorlist)
+        self.color = (239, 242, 63)
     
     def draw(self):
         arcade.draw_circle_filled(self.position.x, self.position.y, self.radius, self.color)
@@ -30,30 +27,28 @@ class Ball():
     def update(self):
         self.position.add(self.velocity)
     
-        if (self.position.x >= WIDTH - self.radius) or (self.position.x <= self.radius):
-            self.velocity.x *= -1
-        if (self.position.y >= HEIGHT - self.radius) or (self.position.y <= self.radius):
-            self.velocity.y *= -1
+        if (self.position.x >= WIDTH + self.radius):
+            self.position.x = -self.radius
+        elif (self.position.x <= -self.radius):
+            self.position.x = WIDTH - self.radius
+        if (self.position.y >= HEIGHT + self.radius):
+            self.position.y = -self.radius
+        elif (self.position.y <= -self.radius):
+            self.position.y = HEIGHT - self.radius
 
-class BouncingBall(arcade.Window):
+class MyWindow(arcade.Window):
     
     def __init__(self):
         super().__init__(WIDTH, HEIGHT, TITLE)
         arcade.set_background_color(((149, 224, 245)))
-        self.balls = []
-        for _ in range(NO_BALLS):
-            self.balls.append(Ball())
+        self.mover = Mover()
     
     def on_draw(self):
         arcade.start_render()
-        
-        for ball in self.balls:
-            ball.draw()
+        self.mover.draw()
     
     def on_update(self, delta_time):
-        
-        for ball in self.balls:
-            ball.update()
+        self.mover.update()
 
-BouncingBall()
+MyWindow()
 arcade.run()
