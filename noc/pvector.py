@@ -85,7 +85,7 @@ class PVector():
         y = self.y - other.y
         result = PVector(x, y)
         return(result)
-    
+        
     def __str__(self):
         return("[" + str(self.x) + ", " + str(self.y) + "]")
         
@@ -96,3 +96,23 @@ class PVector():
         v = cls(x, y)
         v.normalize()
         return(v)
+
+    # Klassenmethoden: Skalare Multiplikation und Division
+    
+    # Multiplikation mit einem Skalar
+    def smult(v, n):
+        x = v.x*n
+        y = v.y*n
+        result = PVector(x, y)
+        return(result)
+
+    # Division mit einem Skalar
+    def sdiv(v, n):
+        if n != 0:
+            x = v.x/n
+            y = v.y/n
+            result = PVector(x, y)
+            return(result)
+        else:
+            print("Error. Divison durch Null!")
+
