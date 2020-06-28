@@ -49,7 +49,7 @@ class MyWindow(arcade.Window):
     
     def __init__(self):
         super().__init__(WIDTH, HEIGHT, TITLE)
-        arcade.set_background_color(((149, 224, 245)))
+        arcade.set_background_color((149, 224, 245))
         self.movers = []
         for _ in range(NO_MOVERS):
             self.movers.append(Mover(random.uniform(0.5, 2.5), 15, HEIGHT - 15))

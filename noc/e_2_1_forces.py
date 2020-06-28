@@ -46,7 +46,7 @@ class MyWindow(arcade.Window):
     
     def __init__(self):
         super().__init__(WIDTH, HEIGHT, TITLE)
-        arcade.set_background_color(((149, 224, 245)))
+        arcade.set_background_color((149, 224, 245))
         self.mover = Mover(1, 40, HEIGHT - 40)
         self.wind = PVector(0.01, 0.0)
         self.gravity = PVector(0, -0.1)
