@@ -2,12 +2,12 @@ import arcade
 import random
 from pvector import PVector
 
-WIDTH = 400
-HEIGHT = 400
+WIDTH = 940
+HEIGHT = 315
 TITLE = "Forces for many Objects"
 NO_MOVERS = 12
 
-colorlist = [(239, 242, 63), (198, 102, 230), (151, 87, 165), (129, 122, 198), (98, 199, 119), (239, 242, 63)]
+colorlist = [(240, 80, 37), (248, 158, 80), (248, 239, 34), (240, 99, 164), (146, 82, 161), (129, 122, 198), (98, 199, 119)]
 
 class Mover():
     
@@ -49,7 +49,7 @@ class MyWindow(arcade.Window):
     
     def __init__(self):
         super().__init__(WIDTH, HEIGHT, TITLE)
-        arcade.set_background_color((149, 224, 245))
+        arcade.set_background_color((49, 197, 244))
         self.movers = []
         for _ in range(NO_MOVERS):
             self.movers.append(Mover(random.uniform(0.5, 2.5), 15, HEIGHT - 15))
