@@ -2,8 +2,8 @@ import arcade
 import random
 from pvector import PVector
 
-WIDTH = 400
-HEIGHT = 400
+WIDTH = 940
+HEIGHT = 295
 TITLE = "Gravity scaled by Mass"
 NO_MOVERS = 12
 
