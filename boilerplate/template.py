@@ -20,7 +20,7 @@ class MyGame(arcade.Window):
     def __init__(self, width, height, title):
         super().__init__(width, height, title)
 
-        arcade.set_background_color(((59, 122, 87))) # arcade.color.AMAZON
+        arcade.set_background_color((59, 122, 87)) # arcade.color.AMAZON
         
         # Hier wird der Pfad zum Verzeichnis des ».py«-Files gesetzt
         # Erspart einem das Herumgehample in TextMate mit dem os.getcwd()
