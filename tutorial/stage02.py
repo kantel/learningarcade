@@ -40,10 +40,19 @@ class MyGame (ar.Window):
         wall.center_x = 5*TILE_SIZE + t2
         wall.center_y = 3*TILE_SIZE + t2
         self.wall_list.append(wall)
+
+        wall = ar.Sprite("images/wall.png")
+        wall.center_x = 5*TILE_SIZE + t2
+        wall.center_y = 4*TILE_SIZE + t2
+        self.wall_list.append(wall)
         
         wall = ar.Sprite("images/wall.png")
         wall.center_x = 4*TILE_SIZE + t2
         wall.center_y = 3*TILE_SIZE + t2
+        self.wall_list.append(wall)
+        wall = ar.Sprite("images/wall.png")
+        wall.center_x = 4*TILE_SIZE + t2
+        wall.center_y = 4*TILE_SIZE + t2
         self.wall_list.append(wall)
         
         # Eine einfache Physic Engine zur Kollisionserkennung
@@ -58,6 +67,9 @@ class MyGame (ar.Window):
         self.physics_engine.update()
 
     def on_key_press(self, key, modifiers):
+        if key == ar.key.ESCAPE:
+            # Quit immediately
+            ar.close_window()
         if key == ar.key.UP:
             self.player_sprite.center_y += TILE_SIZE
         elif key == ar.key.DOWN:
