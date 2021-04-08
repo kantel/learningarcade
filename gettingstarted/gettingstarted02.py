@@ -1,5 +1,5 @@
 # Getting started with the Arcade Game Library
-# Stage 1: Hello Walking Alien
+# Stage 2: Hello Walking Alien
 import arcade
 import os
 
