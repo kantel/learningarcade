@@ -70,7 +70,7 @@ class MyGame(arcade.Window):
         # and set them to None
         self.player_list = None
         self.wall_list = None
-        self.player_speed = 5
+        self.player_speed = PLAYER_SPEED
         
         self.player_sprite = None
         
