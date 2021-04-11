@@ -41,6 +41,24 @@ class Alien(arcade.AnimatedWalkingSprite):
         # Set the hitbox
         self.set_hit_box(self.texture.hit_box_points)
     
+    def update_animation(self, delta_time: float = 1/60):
+        # Figure out if we need to flip face left or right
+        if self.change_x < 0 and self.character_face_direction == RIGHT_FACING:
+            self.character_face_direction = LEFT_FACING
+        elif self.change_x > 0 and self.character_face_direction == LEFT_FACING:
+            self.character_face_direction = RIGHT_FACING
+    
+        # Idle animation
+        if self.change_x == 0:
+            self.texture = self.idle_texture_pair[self.character_face_direction]
+            return
+    
+        # Walking animation
+        self.current_texture += 1
+        # self.current_texture = int(self.current_texture)
+        if self.current_texture >= 2:
+            self.current_texture = 0
+        self.texture = self.walk_textures[self.current_texture][self.character_face_direction]
             
 
 class MyGame(arcade.Window):
