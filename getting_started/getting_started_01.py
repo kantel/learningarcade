@@ -26,6 +26,8 @@ class GameWorld(arcade.Window):
 
         # Call the parent class to set up the window
         super().__init__(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
+        # Position of the window
+        self.set_location(1980, 80)
         
         # Variable to hold our texture for our player
         self.player_texture = None
@@ -79,7 +81,6 @@ class GameWorld(arcade.Window):
             self.player_sprite, walls=self.wall_list, gravity_constant=GRAVITY
         )
 
-        # self.background_color = arcade.csscolor.CORNFLOWER_BLUE
         self.background_color = (128, 128, 128, 255)
 
     def on_draw(self):
