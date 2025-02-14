@@ -4,7 +4,7 @@ Simple Platformer Game with Arcade
 import arcade
 
 # Constants
-WINDOW_WIDTH = 840
+WINDOW_WIDTH = 944
 WINDOW_HEIGHT = 360
 WINDOW_TITLE = "Erste Schritte mit Arcade 3.0"
 

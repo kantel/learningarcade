@@ -18,9 +18,13 @@ PLAYER_SPEED = 5
 GRAVITY = 1
 PLAYER_JUMP = 20
 
+# Create a window class. This is what actually shows up on screen
+window = arcade.Window(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
+# Position of the window (optional)
+window.set_location(1980, 80)
 
 
-class GameWorld(arcade.Window):
+class GameView(arcade.View):
     """
     Main application class.
     """
@@ -28,9 +32,8 @@ class GameWorld(arcade.Window):
     def __init__(self):
 
         # Call the parent class to set up the window
-        super().__init__(WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_TITLE)
-        # Position of the window
-        self.set_location(1980, 80)
+        super().__init__()
+        self.background_color = arcade.color.AMAZON
         
         # Variable to hold our texture for our player
         self.player_texture = None
@@ -46,10 +49,6 @@ class GameWorld(arcade.Window):
         
         # SpriteList for diamonds the player can collect
         self.diamond_list = None
-        
-        # A variable to store our camera object
-        # self.camera = None
-        self.gui_camera = None
         
         # This variable will store our score as an integer.
         self.score = 0
@@ -119,10 +118,6 @@ class GameWorld(arcade.Window):
             self.player_sprite, walls=self.wall_list, gravity_constant=GRAVITY
         )
         
-        # Initialize our camera, setting a viewport the size of our window.
-        # self.camera = arcade.camera.Camera2D()
-        self.gui_camera = arcade.camera.Camera2D()
-        
         # Reset our score to 0
         self.score = 0
 
@@ -140,10 +135,6 @@ class GameWorld(arcade.Window):
         # frame of the game.
         self.clear()
         
-        # Activate our camera before drawing
-        # self.camera.use()
-        self.gui_camera.use()
-
         # Code to draw other things will go here
         self.wall_list.draw()
         self.diamond_list.draw()
@@ -171,14 +162,10 @@ class GameWorld(arcade.Window):
             self.score += 75
             self.score_text.text = f"Score: {self.score}"
         
-        # Center our camera on the player
-        # self.camera.position = self.player_sprite.position
     
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed."""
-        
-        # self.player_sprite.change_x = 0
-        
+                 
         if key == arcade.key.ESCAPE:
             self.setup()
         
@@ -202,8 +189,9 @@ class GameWorld(arcade.Window):
 
 def main():
     """Main function"""
-    window = GameWorld()
-    window.setup()
+    game = GameView()
+    window.show_view(game)
+    game.setup()
     arcade.run()
 
 if __name__ == "__main__":
