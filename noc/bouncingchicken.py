@@ -24,7 +24,6 @@ class GameView(arcade.View):
         super().__init__()
         self.player_texture = None
         self.player_sprite = None
-        # self.position = None
                 
     def setup(self):
         """Set up the game here. Call this function to restart the game."""
