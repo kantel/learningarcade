@@ -57,7 +57,7 @@ class PVector():
     def dist(self, v):
         dx = self.x - v.x
         dy = self.y - v.y
-        return (math.sqrt(dx*dx + dy+dy))
+        return (math.sqrt(dx*dx + dy*dy))
     
     # Berechnung des Skalarprodukts (inneren Produkts) eines Vektors
     def dot(self, v):
